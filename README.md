@@ -17,7 +17,8 @@ import math as mth
 from scipy.stats import mannwhitneyu
 ```
 
-As we had three different groups, we created dataframes for each sample:
+The experiment divides users into three groups: two control groups using the old fonts and one test group using the new fonts.
+
 ```python
 sample_246 = df_august[df_august['ExpId'] == 246]
 sample_247 = df_august[df_august['ExpId'] == 247]
@@ -41,5 +42,16 @@ if p_value < 0.05:
 else:
     print("There isn't a statistically significant difference between both samples")
 ```
-    
+After conducting the tests, we concluded that it is premature to determine if the new fonts are well-accepted. Initially, when comparing the overall means of the control groups, we couldn't identify a statistically significant difference. However, when analyzed by event, we found significant differences in most cases. This discrepancy suggests the need to check for potential issues in the data collection process or other complications.
+
+It is important to highlight that there were no significant differences between the second control group (sample 247) and the third group (sample 248), which isn't a control group.
+
+Key points to note:
+
+* The control groups have specific conditions for control tests. For instance, the difference between the population and key metrics isn't greater than 1%. However, we lack detailed information about the application process, such as whether all users stayed until the end, which could affect the results.
+
+* We applied the Bonferroni test to avoid mistakes in mean comparisons, resulting in different significance levels for each comparison.
+
+* Lastly, we excluded the data from users in July due to its lack of information, but this did not result in a significant data loss.
+  
 You can find the original dataset here: [Click Here](https://github.com/Natcol05/project-1/blob/f0d815a6511195b94b5a2b00e0944e3bb5c2597d/logs_exp_us.csv)
